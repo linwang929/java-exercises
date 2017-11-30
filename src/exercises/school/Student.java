@@ -25,6 +25,50 @@ public class Student {
         nextStudentId++;
     }
 
+    // instance methods
+    public void addGrade(int courseCredits, double grade) {
+        double totalQualityScore = gpa * numberOfCredits;
+        numberOfCredits += courseCredits;
+        totalQualityScore += grade * courseCredits;
+        gpa = totalQualityScore / numberOfCredits;
+    }
+
+    public String getGradeLevel() {
+        String gradeLevel;
+        if (numberOfCredits >= 0 & numberOfCredits < 30) {
+            gradeLevel = "freshman";
+        } else if (numberOfCredits >= 30 & numberOfCredits < 60) {
+            gradeLevel = "sophomore";
+        } else if (numberOfCredits >= 60 & numberOfCredits < 90) {
+            gradeLevel = "junior";
+        } else if (numberOfCredits >= 90) {
+            gradeLevel = "senior";
+        }
+    }
+
+    // special methods
+    public String toString() {
+        return name + " (Credits: " + numberOfCredits + ", GPA: " + gpa + ")";
+    }
+
+    public boolean equals(Object o) {
+
+        if (o == this) {
+            return true;
+        }
+
+        if (o == null) {
+            return false;
+        }
+
+        if (o.getClass() != getClass()) {
+            return false;
+        }
+
+        Student theStudent = (Student) o;
+        return theStudent.getStudentId() == getStudentId();
+    }
+
     // getters and setters
     public String getName() {
         return name;

@@ -26,6 +26,33 @@ public class Course {
         this(name, nextCourseId);
     }
 
+    // special methods
+    public String toString() {
+        return courseId + name + credit + " credits";
+    }
+
+    public boolean equals(Object o) {
+
+        if (o == this) {
+            return true;
+        }
+
+        if (o == null) {
+            return false;
+        }
+
+        if (o.getClass() != getClass()) {
+            return false;
+        }
+
+        Course theCourse = (Course) o;
+        return theCourse.getCourseId() == getCourseId();
+    }
+
     // omit getters and setters
+
+    public int getCourseId() {
+        return courseId;
+    }
 
 }
